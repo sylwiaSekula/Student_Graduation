@@ -29,8 +29,8 @@ The performance of each model was evaluated on a test dataset, and I got the fol
     macro avg      0.91      0.90      0.90      1198
     weighted avg   0.91      0.91      0.91      1198
     
-![logistic regression_confusion_matrix](https://github.com/sylwiaSekula/Student_Graduation/assets/110921660/91b3229d-50f1-4c1a-99c4-c2fc3b3a235d)
-
+![logistic regression_confusion_matrix](https://github.com/sylwiaSekula/Student_Graduation/assets/110921660/d16e4407-1947-4ff3-895d-b985275c7ee8)
+    
 Support Vector Classifier 
               
                 precision    recall  f1-score   support
@@ -41,7 +41,7 @@ Support Vector Classifier
     macro avg      0.90      0.89      0.90      1198
     weighted avg   0.90      0.90      0.90      1198
 
-![Support Vector Classifier_confusion_matrix](https://github.com/sylwiaSekula/Student_Graduation/assets/110921660/35a3827a-028d-4b8b-868f-298d4e08f675)
+![Support Vector Classifier_confusion_matrix](https://github.com/sylwiaSekula/Student_Graduation/assets/110921660/4e98428b-ee78-4eeb-b64d-838b87148175)
 
 Light Gradient Boosting Machine
               
@@ -52,8 +52,8 @@ Light Gradient Boosting Machine
     accuracy                           0.91      1198
     macro avg      0.92      0.90      0.91      1198
     weighted avg   0.91      0.91      0.91      1198
-
-![Light Gradient Boosting Machine_confusion_matrix](https://github.com/sylwiaSekula/Student_Graduation/assets/110921660/ab6a4f6a-0149-49b0-bf9f-13771a9b96cd)
+    
+![Light Gradient Boosting Machine_confusion_matrix](https://github.com/sylwiaSekula/Student_Graduation/assets/110921660/d89ecb1a-5c1f-40b8-a2ae-38a3e20ef8a1)
 
 In the confusion matrixes, you can see the counts of true negatives (correctly predicted as "Dropout"), false positives (actually "Dropout" but predicted as "Graduate"), false negatives (actually "Graduate" but predicted as "Dropout"), and true positives (correctly predicted as "Graduate"). LGBM has the highest number of true positives (701), indicating that it correctly predicts "Graduate" students. LGBM has also the lowest number of true negatives (391), signifying that it makes fewer incorrect predictions for "Dropout" students.
 
