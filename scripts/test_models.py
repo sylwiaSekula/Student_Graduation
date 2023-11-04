@@ -76,5 +76,6 @@ def main():
         print(report)
         plot_confusion_matrix(matrix, encoded_classes, filename=f'{prediction_name}_confusion_matrix')
 
+
 if __name__ == '__main__':
     main()
