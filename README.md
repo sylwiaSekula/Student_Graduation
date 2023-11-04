@@ -18,9 +18,9 @@ I saved all the fitted models, Sequential Feature Selector objects, and Label En
 ## Model Evaluation
 
 The performance of each model was evaluated on a test dataset, and I got the following classification metrics:
-Logistic Regression
-              precision    recall  f1-score   support
 
+    Logistic Regression        
+                 precision    recall  f1-score   support
      Dropout       0.90      0.85      0.88       467
     Graduate       0.91      0.94      0.92       731
 
@@ -29,8 +29,8 @@ Logistic Regression
     weighted avg   0.91      0.91      0.91      1198
 
 Support Vector Classifier 
-              precision    recall  f1-score   support
-
+              
+                precision    recall  f1-score   support
      Dropout       0.90      0.84      0.87       467
     Graduate       0.90      0.94      0.92       731
 
@@ -39,8 +39,8 @@ Support Vector Classifier
     weighted avg   0.90      0.90      0.90      1198
 
 Light Gradient Boosting Machine
-              precision    recall  f1-score   support
-
+              
+                precision    recall  f1-score   support
      Dropout       0.93      0.84      0.88       467
     Graduate       0.90      0.96      0.93       731
 
