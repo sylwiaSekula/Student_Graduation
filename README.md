@@ -1,12 +1,13 @@
 # Student Graduation Classification Project
 
 This project focuses on a classification task using a dataset from Kaggle, which can be accessed here:https://www.kaggle.com/datasets/ranzeet013/student-graduation-dataset. 
-The dataset contains information about students, including various features that can be used to predict their graduation status.
+The dataset contains information about students, including various features that can be used to predict their graduation status. The dataset has 35 columns and 4424 entries.
 
 
 ## Project Overview
 The target variable in this dataset originally had three unique values: "Dropout," "Graduate," and "Enrolled." However, I decided to exclude "Enrolled" from the target column since it represents students who are still studying.
-The target data was encoded using Label Encoder to convert the categorical labels into numerical values suitable for machine learning algorithms. Additionally, I performed feature selection for each model using the Sequential Feature Selector from the scikit-learn library, selecting 20 relevant features using forward selection.
+The target data was encoded using Label Encoder to convert the categorical labels into numerical values suitable for machine learning algorithms. 
+I performed feature selection for each model using the Sequential Feature Selector from the scikit-learn library, selecting 20 relevant features using forward selection.
 Then, I used three different machine learning models to predict the students' graduation status. The models used are:
 1. Logistic Regression:
     Logistic Regression estimates the probability of a binary outcome, making it a simple and effective classification method.
