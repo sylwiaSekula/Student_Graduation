@@ -28,7 +28,7 @@ def plot_confusion_matrix(matrix: np.ndarray, classes: list, filename: str) -> p
     sns.heatmap(matrix, annot=True, fmt="d", cmap="Greens", xticklabels=classes, yticklabels=classes)
     plt.xlabel('Predicted')
     plt.ylabel('Actual')
-    plt.title('Confusion Matrix')
+    plt.title(f'{filename}')
 
     if filename:
         plt.savefig(f'plots/{filename}.png', format='png')
