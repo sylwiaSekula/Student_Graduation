@@ -43,7 +43,7 @@ def main():
     y_pred_lgb = lgb.predict(X_test_lgb)
 
     # print the classification report for each model
-    predictions = [('logistic regression', y_pred_log), ('svm', y_pred_svm), ('lgb', y_pred_lgb)]
+    predictions = [('logistic regression', y_pred_log), ('Support Vector Classifier', y_pred_svm), ('Light Gradient Boosting Machine', y_pred_lgb)]
     encoded_classes = le.classes_
 
     for prediction_name, prediction in predictions:
