@@ -1,4 +1,7 @@
-from sklearn.metrics import classification_report
+import matplotlib.pyplot as plt
+import numpy as np
+import seaborn as sns
+from sklearn.metrics import classification_report, confusion_matrix
 
 from scripts.prepare_and_train_models import *
 
@@ -12,6 +15,25 @@ def load_model(model_dir: str, model_file: str) -> object:
     """
     return pickle.load(open(os.path.join(model_dir, model_file), 'rb'))
 
+
+def plot_confusion_matrix(matrix: np.ndarray, classes: list, filename: str) -> plt.Figure:
+    """
+    Plot a confusion matrix as a heatmap.
+    :param matrix: (np.ndarray)
+    :param classes: (list of str), the list of class labels
+    :param filename: (str), optional, if provided the plot will be saved to a file in the "plots" folder.
+    :return: The confusion matrix plot
+    """
+    plt.figure(figsize=(6, 6))
+    sns.heatmap(matrix, annot=True, fmt="d", cmap="Greens", xticklabels=classes, yticklabels=classes)
+    plt.xlabel('Predicted')
+    plt.ylabel('Actual')
+    plt.title('Confusion Matrix')
+
+    if filename:
+        plt.savefig(f'plots/{filename}.png', format='png')
+
+    plt.show()
 
 def main():
     # load the test dataset
@@ -43,14 +65,16 @@ def main():
     y_pred_lgb = lgb.predict(X_test_lgb)
 
     # print the classification report for each model
-    predictions = [('logistic regression', y_pred_log), ('Support Vector Classifier', y_pred_svm), ('Light Gradient Boosting Machine', y_pred_lgb)]
+    predictions = [('logistic regression', y_pred_log), ('Support Vector Classifier', y_pred_svm),
+                   ('Light Gradient Boosting Machine', y_pred_lgb)]
     encoded_classes = le.classes_
 
     for prediction_name, prediction in predictions:
         report = classification_report(y_test, prediction, target_names=encoded_classes)
+        matrix = confusion_matrix(y_test, prediction)
         print(f'{prediction_name}')
         print(report)
-
+        plot_confusion_matrix(matrix, encoded_classes, filename=f'{prediction_name}_confusion_matrix')
 
 if __name__ == '__main__':
     main()
