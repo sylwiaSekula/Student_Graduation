@@ -8,7 +8,6 @@ from sklearn import preprocessing
 from sklearn.feature_selection import SequentialFeatureSelector
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split, cross_val_score
-from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
 
@@ -82,17 +81,18 @@ def main():
     le = preprocessing.LabelEncoder()
     y_train_resampled = le.fit_transform(y_train)
     pickle.dump(le, open(os.path.join(trained_model_dir, le_file), 'wb'))
+    # scale the data in numerical columns and save the trained Standardscaler
+    scaler = StandardScaler()
+    X_train[numerical_columns] = scaler.fit_transform(X_train[numerical_columns])
+    pickle.dump(scaler, open(os.path.join(trained_model_dir, scaler_file), 'wb'))
     # create machine learning models and pipelines
     logistic = LogisticRegression(random_state=random_state, class_weight="balanced")
-    scaler = StandardScaler()
-    logistic_pipe = Pipeline([("scaler", scaler), ("logistic", logistic)])
     svc = SVC(random_state=random_state, class_weight='balanced')
-    svc_pipe = Pipeline([("scaler", scaler), ("svc", svc)])
     lgb = LGBMClassifier(random_state=random_state)
 
     models_and_files = [
-        ("Logistic Regression", logistic_pipe, selection_file_log, pipe_log_file),
-        ("Support Vector Classifier", svc_pipe, selection_file_svc, svc_pipe_file),
+        ("Logistic Regression", logistic, selection_file_log, log_file),
+        ("Support Vector Classifier", svc, selection_file_svc, svc_file),
         ("LightGBM Classifier", lgb, selection_file_lgb, lgb_file),
     ]
 
